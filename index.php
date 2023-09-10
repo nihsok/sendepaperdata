@@ -2,7 +2,11 @@
 <html>
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width">
   <title>upload & compile & send</title>
+  <style type="text/css">
+    img{max-width:100%;}
+  </style>
 </head>
 <body>
 
@@ -23,7 +27,7 @@ switch($_FILES['img']['error']){
 }
 $tmp_file = $_FILES['img']['tmp_name'];
 if(move_uploaded_file($tmp_file,'./tmp.png')){
-  echo "Uploaded.";
+  echo "Uploaded.<br>";
   echo '<img src="tmp.png">';
   exec('bash ./send.sh',$return);
 }else{
