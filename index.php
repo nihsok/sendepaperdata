@@ -28,8 +28,9 @@ switch($_FILES['img']['error']){
 $tmp_file = $_FILES['img']['tmp_name'];
 if(move_uploaded_file($tmp_file,'./tmp.png')){
   echo "Uploaded.<br>";
-  echo '<img src="tmp.png">';
+  echo '<img src="tmp2.png">';
   exec('bash ./send.sh',$return);
+  exec('mv tmp.png tmp2.png');
 }else{
   echo "file preparation error.";
 }
