@@ -17,10 +17,10 @@ if aspect_org < 1 :
 # resize, monochrome(0/1), padding, and return narray
 if aspect_org > width/height:#high aspect -> adjust width & pad height
   height_tmp = round(width/aspect_org)
-  img2d=np.vstack(( 1-np.array(gray.resize((width,height_tmp)).convert('1')), np.zeros((height-height_tmp,width),dtype=np.uint8) ))
+  img2d=np.vstack(( np.array(gray.resize((width,height_tmp)).convert('1')), np.ones((height-height_tmp,width),dtype=np.uint8) ))
 else:#low aspect -> adjust height & pad width
   width_tmp = round(height*aspect_org)
-  img2d=np.hstack(( 1-np.array(gray.resize((width_tmp,height)).convert('1')), np.zeros((height,width-width_tmp),dtype=np.uint8) ))
+  img2d=np.hstack(( np.array(gray.resize((width_tmp,height)).convert('1')), np.ones((height,width-width_tmp),dtype=np.uint8) ))
 
 shift=np.uint8(range(0,8)[::-1])
 with open('tmp.buf','wb') as f:
